@@ -14,7 +14,28 @@ class ConfigService extends GetxService {
   PackageInfo? _platform;
   String get version => _platform?.version ?? '-';
 
+  // 主题
+  final RxBool _isDarkModel = Get.isDarkMode.obs;
+  bool get isDarkModel => _isDarkModel.value;
+
   Locale locale = PlatformDispatcher.instance.locale;
+
+  // 初始化
+  // Future<ConfigService> init() async {
+  //   await getPlatform();
+  //   initLocale();
+  //   initTheme();
+  //   return this;
+  // }
+
+  @override
+  void onReady() {
+    super.onReady();
+    getPlatform();
+    initLocale();
+    initTheme();
+  }
+
   // 初始语言
   void initLocale() {
     var langCode = Storage().getString(Constants.storageLanguageCode);
@@ -32,14 +53,28 @@ class ConfigService extends GetxService {
     Get.updateLocale(value);
     Storage().setString(Constants.storageLanguageCode, value.languageCode);
   }
-  // 初始化
-  Future<ConfigService> init() async {
-    await getPlatform();
-    initLocale();
-    return this;
-  }
 
   Future<void> getPlatform() async {
     _platform = await PackageInfo.fromPlatform();
+  }
+
+  // 切换 theme
+  Future<void> switchThemeModel() async {
+    _isDarkModel.value = !_isDarkModel.value;
+    Get.changeTheme(
+      _isDarkModel.value == true ? AppTheme.dark : AppTheme.light,
+    );
+    await Storage().setString(Constants.storageThemeCode,
+        _isDarkModel.value == true ? "dark" : "light");
+  }
+
+  // 初始 theme
+  void initTheme() {
+    var themeCode = Storage().getString(Constants.storageThemeCode);
+    print("------ ${themeCode}");
+    _isDarkModel.value = themeCode == "dark" ? true : false;
+    Get.changeTheme(
+      themeCode == "dark" ? AppTheme.dark : AppTheme.light,
+    );
   }
 }
