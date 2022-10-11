@@ -20,6 +20,13 @@ class ConfigService extends GetxService {
 
   Locale locale = PlatformDispatcher.instance.locale;
 
+  // 是否首次打开
+  bool get isFirstOpen => Storage().getBool(Constants.storageFirstOpen);
+
+  // 标记已打开app
+  void setAlreadyOpen() {
+    Storage().setBool(Constants.storageFirstOpen, true);
+  }
   // 初始化
   // Future<ConfigService> init() async {
   //   await getPlatform();
