@@ -10,7 +10,7 @@ class Global {
     FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
     // 工具类
     await Storage().init();
-
+    Loading();
 
     // await Future.wait([
     //   Get.putAsync<ConfigService>(() async => await ConfigService().init()),
@@ -18,5 +18,6 @@ class Global {
     // });
     Get.put<ConfigService>(ConfigService());
     Get.put<WPHttpService>(WPHttpService());
+
   }
 }
