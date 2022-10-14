@@ -18,6 +18,6 @@ class Global {
     // });
     Get.put<ConfigService>(ConfigService());
     Get.put<WPHttpService>(WPHttpService());
-
+    Get.put<UserService>(UserService());
   }
 }

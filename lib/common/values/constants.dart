@@ -8,4 +8,7 @@ class Constants {
   static const storageThemeCode = 'theme_code';
 
   static const storageFirstOpen = 'first_open'; // 首次打开
+
+  static const storageToken = 'token';// 登录成功后 token
+  static const storageProfile = 'profile';// 用户资料缓存
 }
