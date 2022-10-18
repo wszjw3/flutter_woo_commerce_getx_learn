@@ -9,10 +9,13 @@ class SplashController extends GetxController {
     update(["splash"]);
   }
 
-  _jumpToPage() {
-    // 欢迎页
-    Future.delayed(const Duration(seconds: 1), () {
-      Get.offAllNamed(RouteNames.systemWelcome);
+  void _jumpToPage() {
+    Future.delayed(const Duration(seconds: 1)).then((_) {
+      if (!ConfigService.to.isFirstOpen) {
+        Get.offAllNamed(RouteNames.main);
+      } else {
+        Get.offAllNamed(RouteNames.systemWelcome);
+      }
     });
   }
 
@@ -26,14 +29,13 @@ class SplashController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+
     // 删除设备启动图
     FlutterNativeSplash.remove();
-    // 样式配置
-    if (ConfigService.to.isFirstOpen == false) {
-      Get.offAllNamed(RouteNames.systemWelcome);
-    } else {
-      Get.offAllNamed(RouteNames.main);
-    }
+
+    // 去首页
+    _jumpToPage();
+
   }
 
   // @override

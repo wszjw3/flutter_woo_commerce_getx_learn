@@ -1,5 +1,4 @@
-library main;
+library msg_indx;
 
 export './controller.dart';
 export './view.dart';
-export './binding.dart';

@@ -18,6 +18,7 @@ class RoutePages {
     GetPage(
       name: RouteNames.main,
       page: () => const MainPage(),
+      binding: MainBinding()
     ),
     GetPage(
       name: RouteNames.cartApplyPromoCode,
