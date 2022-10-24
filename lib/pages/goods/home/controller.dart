@@ -115,12 +115,26 @@ class HomeController extends GetxController {
     // 新商品
     newProductProductList = await ProductApi.products(ProductsReq());
 
+    // 颜色
+    var attributeColors = await ProductApi.attributes(1);
+    // 基础数据
+    // 尺寸
+    var attributeSizes = await ProductApi.attributes(2);
+
+    // 保存离线数据
+    // 尺寸定义
+    Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
+
 
     // 保存离线数据
     Storage().setJson(Constants.storageHomeBanner, bannerItems);
     Storage().setJson(Constants.storageHomeCategories, categoryItems);
     Storage().setJson(Constants.storageHomeFlashSell, flashShellProductList);
     Storage().setJson(Constants.storageHomeNewSell, newProductProductList);
+    // 保存离线数据
+    Storage().setJson(Constants.storageProductsCategories, categoryItems);
+    // 基础
+    Storage().setJson(Constants.storageProductsAttributesColors, attributeColors);
 
     // 模拟网络延迟 1 秒
     await Future.delayed(const Duration(seconds: 1));
@@ -169,12 +183,29 @@ class HomeController extends GetxController {
   }
 
   // 导航点击事件
-  void onAppBarTap() {}
+  void onAppBarTap() {
+    Get.toNamed(RouteNames.searchSearchIndex);
+  }
   // 分类点击事件
-  void onCategoryTap(int categoryId) {}
+  void onCategoryTap(int categoryId) {
+    Get.toNamed(
+      RouteNames.goodsCategory,
+      arguments: {
+        "id": categoryId,
+      },
+    );
+  }
 
   // ALL 点击事件
-  void onAllTap(bool featured) {}
+  void onAllTap(bool featured) {
+    Get.toNamed(
+      RouteNames.goodsProductList,
+      arguments: {
+        "featured": featured,
+      },
+    );
+  }
+
   void onTap() {}
 
   @override

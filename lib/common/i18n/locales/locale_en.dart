@@ -79,4 +79,31 @@ Map<String, String> localeEn = {
   LocaleKeys.gHomeFlashSell: 'Flash Sell',
   LocaleKeys.gHomeNewProduct: 'New Product',
   LocaleKeys.gHomeMore: 'ALL',
+
+  // 商品 - 列表
+  LocaleKeys.gFlashSellTitle: 'Flash Sell',
+  LocaleKeys.gNewsTitle: 'New Product',
+
+  // 商品 - 分类页
+  LocaleKeys.gCategoryTitle: 'All Categories',
+
+  // 商品 - 详情
+  LocaleKeys.gDetailTitle: 'Product Info',
+  LocaleKeys.gDetailTabProduct: 'Product',
+  LocaleKeys.gDetailTabDetails: 'Details',
+  LocaleKeys.gDetailTabReviews: 'Reviews',
+  LocaleKeys.gDetailBtnAddCart: 'Add To Cart',
+  LocaleKeys.gDetailBtnBuy: 'Buy Now',
+
+  // 搜索
+  LocaleKeys.searchPlaceholder: 'Search Product',
+  LocaleKeys.searchOrder: 'Best Match',
+  LocaleKeys.searchFilter: 'Filter',
+  LocaleKeys.searchFilterPrice: 'Price',
+  LocaleKeys.searchFilterSize: 'Size',
+  LocaleKeys.searchFilterColor: 'Color',
+  LocaleKeys.searchFilterReview: 'Review',
+  LocaleKeys.searchFilterBrand: 'Brand',
+  LocaleKeys.searchFilterGender: 'Gender',
+  LocaleKeys.searchFilterCondition: 'Condition',
 };
